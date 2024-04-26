@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy Detector</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 10px;
+      padding: 20px;
+      background: #ffffff;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    h1 {
+      color: #5A4EDE; /* Dark blue color */
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+      margin: 5px 0;
+    }
+    .data-display {
+      background: #F7F7FF;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .data-display p {
+      font-weight: bold;
+      color: #333;
+    }
+    .data-display span {
+      float: right;
+      color: #5A4EDE;
+    }
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <h1>Privacy Detector</h1>
+  <div class="data-display">
+    <p>Third Party Requests: <span id="third-party-requests">0</span></p>
+    <p>Cookies Used: <span id="cookies-used">0</span></p>
+    <p>Local Storage Items: <span id="local-storage-items">0</span></p>
+    <p>Session Storage Items: <span id="session-storage-items">0</span></p>
+    <div class="clear"></div>
+  </div>
+</body>
+<script src="popup.js"></script>
+</html>
