@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Privacy Detector",
+  "name": "Lucas Extension Privacy Detector",
   "version": "1.0",
   "description": "Detecta e apresenta a quantidade de cookies, web storage e conexões para domínios de terceira parte.",
   "permissions": [
