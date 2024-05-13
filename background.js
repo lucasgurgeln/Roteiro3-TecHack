@@ -1,13 +1,26 @@
 let thirdPartyRequests = 0;
-let cookiesUsed = 0;
+let firstPartyCookies = 0;
+let thirdPartyCookies = 0;
+let sessionCookies = 0;
+let persistentCookies = 0;
 let localStorageItems = 0;
 let sessionStorageItems = 0;
 
 function countCookies(details, tabHostname) {
   browser.cookies.getAll({url: details.url}).then(cookies => {
     cookies.forEach(cookie => {
-      if (!cookie.domain.includes(tabHostname)) {
-        cookiesUsed++;
+      if (cookie.domain.includes(tabHostname)) {
+        // Cookie de primeira parte
+        firstPartyCookies++;
+      } else {
+        // Cookie de terceira parte
+        thirdPartyCookies++;
+      }
+      // Diferenciação entre cookies de sessão e persistentes
+      if (cookie.session) {
+        sessionCookies++;
+      } else {
+        persistentCookies++;
       }
     });
   });
@@ -60,12 +73,12 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.request === "getData") {
       sendResponse({
           thirdPartyRequests,
-          cookiesUsed,
+          firstPartyCookies,
+          thirdPartyCookies,
+          sessionCookies,
+          persistentCookies,
           localStorageItems,
           sessionStorageItems
       });
   }
 });
-
-
-
